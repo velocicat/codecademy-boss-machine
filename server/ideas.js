@@ -36,4 +36,9 @@ ideasRouter.put('/:ideaId', (req, res, next) => {
     res.status(200).send(idea);
 });
 
+ideasRouter.delete('/:ideaId', (req, res, next) => {
+    db.deleteFromDatabasebyId('ideas', req.ideaId);
+    res.status(204).send();
+});
+
 module.exports = ideasRouter;
