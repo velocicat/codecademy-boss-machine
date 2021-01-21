@@ -31,4 +31,9 @@ ideasRouter.post('/', (req, res, next) => {
     res.status(201).send(idea);
 });
 
+ideasRouter.put('/:ideaId', (req, res, next) => {
+    const idea = db.updateInstanceInDatabase('ideas', req.body);
+    res.status(200).send(idea);
+});
+
 module.exports = ideasRouter;
