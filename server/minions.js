@@ -17,27 +17,27 @@ minionsRouter.param('minionId', (req, res, next, id) => {
     }  
 });
 
-minionsRouter.get('/minions', (req, res, next) => {
+minionsRouter.get('/', (req, res, next) => {
     const minions = db.getAllFromDatabase('minions');
     res.send(minions);
 });
 
-minionsRouter.get('/minions/:minionId', (req, res, next) => {
+minionsRouter.get('/:minionId', (req, res, next) => {
     const minion = db.getFromDatabaseById('minions', req.minionId);
     res.send(minion);
 });
 
-minionsRouter.post('/minions', (req, res, next) => {
+minionsRouter.post('/', (req, res, next) => {
     const minion = db.addToDatabase('minions', req.body);
     res.status(201).send(minion);
 });
 
-minionsRouter.put('/minions/:minionId', (req, res, next) => {
+minionsRouter.put('/:minionId', (req, res, next) => {
     const minion = db.updateInstanceInDatabase('minions', req.body);
     res.status(200).send(minion);
 });
 
-minionsRouter.delete('/minions/:minionId', (req, res, next) => {
+minionsRouter.delete('/:minionId', (req, res, next) => {
     db.deleteFromDatabasebyId('minions', req.minionId);
     res.status(204).send();
 });
